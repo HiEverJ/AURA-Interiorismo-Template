@@ -1,0 +1,75 @@
+@import '../variable';
+@import '../mixins';
+
+.services {
+  padding: 160px 0;
+  border-top: 1px solid var(--border-color);
+  background-color: rgba(13, 17, 23, 0.4);
+
+  @include respond-to("ipad") {
+    padding: 100px 0;
+  }
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+  gap: 40px;
+
+  @include respond-to("ipad") {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.services-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 1.8fr;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  align-items: flex-start;
+  gap: 24px;
+  transition: background-color 0.4s $ease-premium;
+
+  &:last-child {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .service-index {
+    font-family: $font-serif;
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-top: 6px;
+  }
+
+  .service-name {
+    font-family: $font-serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-main);
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 580px;
+  }
+
+  &:hover {
+    background-color: rgba(244, 244, 240, 0.01);
+  }
+
+  @include respond-to("ipad") {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 32px 0;
+  }
+}

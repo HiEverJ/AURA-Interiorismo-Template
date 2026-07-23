@@ -1,0 +1,116 @@
+@import '../variable';
+@import '../mixins';
+
+.smart-nav {
+  position: fixed;
+  top: 24px;
+  left: 0;
+  width: 100%;
+  z-index: $z-index-nav;
+  transition: transform 0.6s $ease-premium, opacity 0.6s $ease-premium;
+  display: flex;
+  justify-content: center;
+
+  &.nav-hidden {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  @include respond-to("iphone") {
+    top: 16px;
+  }
+}
+
+.nav-pill {
+  @include liquid-glass(0.4, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 720px;
+  padding: 8px 12px 8px 24px;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  @include respond-to("ipad") {
+    max-width: 90%;
+  }
+
+  @include respond-to("iphone") {
+    padding: 6px 8px 6px 16px;
+  }
+}
+
+.nav-logo {
+  font-family: $font-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--text-main);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-item {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  padding: 10px 18px;
+  border-radius: 20px;
+  transition: $transition-smooth;
+
+  &:hover {
+    color: var(--text-main);
+  }
+
+  &.contact-pill {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+    }
+  }
+
+  @include respond-to("iphone") {
+    font-size: 11px;
+    padding: 8px 12px;
+    
+    &:not(.contact-pill) {
+      display: none;
+    }
+  }
+}
+
+.theme-switcher {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: $transition-smooth;
+
+  .mode-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--text-main);
+    transition: $transition-smooth;
+  }
+
+  &:hover {
+    border-color: var(--text-main);
+  }
+}

@@ -1,0 +1,34 @@
+// ==========================================================================
+// AURA MIXINS — LÓGICA DE ESCALADO Y RESPONSIVIDAD MATEMÁTICA
+// ==========================================================================
+
+// 1. Tipografía Fluida con Parámetros Clámicos (Evita desbordamientos en iPhone/iPad)
+// Calcula de forma automática el tamaño ideal entre el mínimo (móvil) y máximo (desktop)
+@mixin fluid-type($min-size, $max-size, $min-vw: 375px, $max-vw: 1440px) {
+  font-size: clamp(
+    #{$min-size}, 
+    calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))), 
+    #{$max-size}
+  );
+}
+
+// 2. Breakpoints Arquitectónicos Limpios
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "iphone" {
+    @media (max-width: 480px) { @content; }
+  }
+  @if $breakpoint == "ipad" {
+    @media (max-width: 1024px) { @content; }
+  }
+  @if $breakpoint == "desktop-large" {
+    @media (min-width: 1441px) { @content; }
+  }
+}
+
+// 3. Efecto Liquid Glass (Configuración Core del Desenfoque)
+@mixin liquid-glass($bg-opacity: 0.4, $blur-radius: 20px) {
+  background: rgba(22, 27, 34, $bg-opacity); 
+  backdrop-filter: blur($blur-radius);
+  -webkit-backdrop-filter: blur($blur-radius);
+  border: 1px solid rgba(244, 244, 240, 0.05);
+}
