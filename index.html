@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+    <script src="assets/js/theme.js"></script>
+    <meta name="description" content="AURA is an illustrative interior design studio portfolio exploring natural light, thoughtful materials and quiet spaces.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AURA — High-End Interior Architecture</title>
@@ -9,107 +11,115 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Prata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="scss/enhancements.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="smart-nav">
-        <nav class="nav-pill">
-            <a href="#" class="nav-logo">AURA</a>
-            <div class="nav-menu">
+        <nav class="nav-pill" aria-label="Main navigation">
+            <a href="#hero" class="nav-logo" aria-label="AURA — home">AURA</a>
+            <div class="nav-menu" id="main-navigation">
                 <a href="#portfolio" class="nav-item">Works</a>
                 <a href="#philosophy" class="nav-item">Studio</a>
                 <a href="#services" class="nav-item">Services</a>
-                <button id="theme-toggle" class="theme-switcher" aria-label="Toggle theme">
-                    <span class="mode-icon"></span>
-                </button>
                 <a href="#contact" class="nav-item contact-pill">Contact</a>
+            </div>
+            <div class="nav-controls">
+                <button hidden type="button" id="theme-toggle" class="theme-switcher" aria-label="Switch to light appearance"><span class="mode-icon" aria-hidden="true"></span><span class="theme-label">Light</span></button>
+                <button hidden type="button" id="menu-toggle" class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">Menu</button>
             </div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero" id="hero">
+    <main id="main-content" tabindex="-1">
+        <section class="hero" id="hero" tabindex="-1">
             <div class="hero-container">
                 <div class="hero-content">
                     <h1 class="hero-title">Minimal spaces.<br><span class="italic-text">Maximum impact.</span></h1>
-                    <p class="hero-lead">Architectural interior design prioritizing material honesty, natural light mastery, and structural golden proportions.</p>
+                    <p class="hero-lead">Thoughtful interiors shaped by natural light, tactile materials and the way people live.</p>
                     <div class="hero-actions">
                         <a href="#contact" class="btn-premium">
-                            <span class="btn-text">Start Consultation</span>
+                            <span class="btn-text">Discuss your space</span>
                             <span class="btn-arrow">→</span>
                         </a>
                     </div>
                 </div>
                 <div class="hero-visual">
                     <div class="image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop" alt="AURA Minimalist Interior Concrete" class="parallax-img">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop" alt="Interior mood reference for the AURA concept studio" class="parallax-img" decoding="async" fetchpriority="high">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="philosophy" id="philosophy">
+        <section class="philosophy" id="philosophy" tabindex="-1">
             <div class="container philosophy-grid">
                 <div class="meta-label">01 / PHILOSOPHY</div>
                 <div class="philosophy-statement">
                     <h2>We create environments where the absence of noise allows matter to speak.</h2>
-                    <p>We reject superfluous ornamentation. Our work is rooted in the rigorous curation of monolithic textures, pure lines, and a seamless synchronicity between volume and void.</p>
+                    <p>Our starting point is everyday life: the path of daylight, the rhythm of a room and the materials people touch. We bring these elements together through clear layouts, considered proportions and a restrained palette.</p>
                 </div>
             </div>
         </section>
 
-        <section class="portfolio" id="portfolio">
+        <section class="portfolio" id="portfolio" tabindex="-1">
             <div class="container">
                 <div class="portfolio-header">
                     <h2 class="section-title">Selected Works</h2>
-                    <span class="portfolio-timeline">2025 — 2026</span>
+                    <span class="portfolio-timeline">Four design concepts</span>
                 </div>
                 
+                <p class="section-intro">Illustrative project stories with interior mood references. These examples demonstrate the portfolio layout; they are not documented built commissions.</p>
                 <div class="portfolio-grid">
                     <article class="portfolio-item item-large">
                         <div class="item-image-ctx">
-                            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop" alt="Casa Amatista Residence">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop" alt="Interior mood reference for Casa Amatista">
                         </div>
                         <div class="item-meta">
                             <h3>Casa Amatista</h3>
-                            <p>Residential Design — Valle de Bravo</p>
+                            <p>Residential concept — Valle de Bravo</p>
                         </div>
+                        <details class="project-details"><summary>Explore Casa Amatista</summary><p><strong>A home for slower days</strong></p><p>A residential concept organized around a shared living area, warm neutral finishes and a connection to the surrounding landscape. The direction balances generous gathering spaces with quieter corners.</p><p><strong>Scope:</strong> Planning, material palette and furniture direction.</p><p>Concept example. The photograph is a stock interior reference.</p><a href="#contact">Discuss a similar project →</a></details>
                     </article>
 
                     <article class="portfolio-item item-medium shelf-down">
                         <div class="item-image-ctx">
-                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Nido Apartment">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Interior mood reference for Nido Apartment">
                         </div>
                         <div class="item-meta">
                             <h3>Nido Apartment</h3>
-                            <p>Urban Minimalism — CDMX</p>
+                            <p>Apartment concept — Mexico City</p>
                         </div>
+                        <details class="project-details"><summary>Explore Nido Apartment</summary><p><strong>More room for everyday living</strong></p><p>A compact apartment concept that considers flexible furniture, useful storage and a clear route between daily activities. Soft tones and a limited material palette bring the rooms together.</p><p><strong>Scope:</strong> Compact-space planning and furniture selection.</p><p>Concept example. The photograph is a stock interior reference.</p><a href="#contact">Discuss a similar project →</a></details>
                     </article>
 
                     <article class="portfolio-item item-medium">
                         <div class="item-image-ctx">
-                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop" alt="Textura Studio">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop" alt="Interior mood reference for Textura Studio">
                         </div>
                         <div class="item-meta">
                             <h3>Textura Studio</h3>
-                            <p>Workspace Design — Guadalajara</p>
+                            <p>Workspace concept — Guadalajara</p>
                         </div>
+                        <details class="project-details"><summary>Explore Textura Studio</summary><p><strong>A tactile place to work</strong></p><p>A workspace concept exploring a balance between shared tables and focused individual tasks. Natural textures and restrained accents establish a calm backdrop for a creative practice.</p><p><strong>Scope:</strong> Workspace layout, materials and lighting direction.</p><p>Concept example. The photograph is a stock interior reference.</p><a href="#contact">Discuss a similar project →</a></details>
                     </article>
 
                     <article class="portfolio-item item-large shelf-up">
                         <div class="item-image-ctx">
-                            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1000&auto=format&fit=crop" alt="Villa Lumina">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=1000&auto=format&fit=crop" alt="Interior mood reference for Villa Lumina">
                         </div>
                         <div class="item-meta">
                             <h3>Villa Lumina</h3>
-                            <p>Interior Architecture — Tulum</p>
+                            <p>Retreat concept — Tulum</p>
                         </div>
+                        <details class="project-details"><summary>Explore Villa Lumina</summary><p><strong>Living with the changing light</strong></p><p>A retreat concept centered on open living spaces, shaded transitions and a relaxed material palette. Furniture is arranged to support conversation while keeping circulation clear.</p><p><strong>Scope:</strong> Interior concept, furniture and finish direction.</p><p>Concept example. The photograph is a stock interior reference.</p><a href="#contact">Discuss a similar project →</a></details>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="services" id="services">
+        <section class="services" id="services" tabindex="-1">
             <div class="container services-grid">
                 <div class="meta-label">02 / CAPABILITIES</div>
                 <div class="services-wrapper">
@@ -126,18 +136,35 @@
                     <div class="service-row">
                         <span class="service-index">C</span>
                         <h3 class="service-name">Bespoke Furniture</h3>
-                        <p class="service-desc">Conceptual design and custom fabrication of exclusive furniture pieces integrating organically with the site's architecture.</p>
+                        <p class="service-desc">Furniture concepts and selections shaped around the proportions and everyday use of each space. Fabrication scope is agreed separately with the project team.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact" id="contact">
+        <section class="contact" id="contact" tabindex="-1">
             <div class="contact-container">
                 <h2 class="contact-title">Have a space in mind?</h2>
                 <p class="contact-legend">Let's discuss how to transform your architectural vision into an environment with a timeless aesthetic identity.</p>
                 <div class="contact-action">
-                    <a href="mailto:studio@aura.com" class="btn-large-contact">studio@aura.com</a>
+                    <a href="mailto:studio@example.com" class="btn-large-contact">studio@example.com</a>
+                </div>
+                <p class="contact-note">Demo contact address — replace with your studio email before publishing.</p>
+                <div class="inquiry">
+                    <h3>Tell us about your space.</h3>
+                    <p id="inquiry-help" class="inquiry-help">Prepare an email draft on your device. Nothing is sent or stored by this website. Fields marked with an asterisk are required.</p>
+                    <form id="inquiry-form" data-recipient="studio@example.com" aria-describedby="inquiry-help">
+                        <div class="form-grid">
+                            <div class="field"><label for="inquiry-name">Name *</label><input id="inquiry-name" name="name" autocomplete="name" maxlength="80" required></div>
+                            <div class="field"><label for="inquiry-address">Email *</label><input id="inquiry-address" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+                            <div class="field field-wide"><label for="inquiry-project">Project type *</label><select id="inquiry-project" name="project" required><option value="">Choose a project type</option><option>Residential interior</option><option>Workspace interior</option><option>Furniture and materials</option><option>Other / To discuss</option></select></div>
+                            <div class="field field-wide"><label for="inquiry-message">Location, scope and timeline *</label><textarea id="inquiry-message" name="message" rows="5" maxlength="1200" placeholder="Tell us what you have in mind…" required></textarea></div>
+                        </div>
+                        <button id="inquiry-prepare" disabled type="submit" class="btn-premium"><span class="btn-text">Prepare email draft</span><span aria-hidden="true">↗</span></button>
+                    </form>
+                    <noscript><p>Enable JavaScript to prepare a draft, or use the email address above.</p></noscript>
+                    <p id="inquiry-status" role="status"></p>
+                    <div id="inquiry-result" hidden><label class="draft-label" for="inquiry-draft">Your draft — ready to copy</label><textarea id="inquiry-draft" rows="10" readonly></textarea><a id="inquiry-email" class="btn-premium"><span class="btn-text">Open email app</span><span aria-hidden="true">↗</span></a><p>If your email app does not open, copy the draft into your preferred email service. You send it from there.</p></div>
                 </div>
             </div>
         </section>
@@ -146,10 +173,10 @@
     <footer class="main-footer">
         <div class="container footer-container">
             <div class="footer-copyright">
-                <p>© 2026 AURA Studio. All rights reserved.</p>
+                <p>© 2026 AURA Studio.</p><p class="demo-note">Illustrative studio portfolio. Concept projects and stock interior references.</p>
             </div>
             <div class="footer-signature">
-                <p>Editorial Aesthetics & Digital Architecture.</p>
+                <p>Considered spaces. Everyday life.</p><a href="#hero">Back to top ↑</a>
             </div>
         </div>
     </footer>

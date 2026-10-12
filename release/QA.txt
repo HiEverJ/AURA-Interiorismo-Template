@@ -1,0 +1,59 @@
+AURA 1.1 — RECUENTO DE CAMBIOS
+Fecha: 12 de octubre de 2026
+
+ALCANCE
+Análisis del código y aplicación de mejoras, con el mismo tipo de entrega
+que NOIR. AURA conserva su formato de una sola página y dos apariencias.
+Por indicación del dueño NO se hicieron pruebas, scripts de prueba,
+validaciones visuales, navegación de prueba, capturas, PDF ni entornos aislados.
+QA.txt es el nombre del recuento solicitado; no representa pruebas superadas.
+
+PROBLEMAS IDENTIFICADOS EN EL CÓDIGO
+- Los enlaces Works, Studio y Services desaparecían en móvil sin menú alternativo.
+- La barra podía ocultarse durante el desplazamiento, incluso siendo necesaria
+  para continuar navegando; ahora permanece disponible.
+- El tema se leía tarde y el acceso a localStorage no controlaba errores.
+- El paralaje acumulaba trabajo de scroll y no respetaba movimiento reducido.
+- El HTML usa services-grid, pero la disposición original estaba definida
+  para services-container; se añadió la regla correspondiente al HTML real.
+- El fondo oscuro fijo de servicios no se adaptaba al tema claro.
+- Las tarjetas carecían de contexto adicional de proyecto.
+- El correo studio@aura.com podía dirigir a un dominio ajeno; se sustituyó
+  por un placeholder inequívoco que el comprador debe configurar.
+
+CAMBIOS APLICADOS
+1. Menú móvil con estado expandido, relación con su contenido, cierre con
+   Escape y control de foco al cambiar de tamaño. Sin JS quedan visibles los enlaces.
+2. Tema aplicado temprano, valores admitidos y almacenamiento opcional protegido.
+   Control visible con etiqueta de la acción disponible.
+3. Retiro del paralaje continuo y del ocultamiento automático de la cabecera.
+   Se conservan efectos discretos de hover y se respeta movimiento reducido.
+4. Capa CSS final para navegación, servicios, composición estrecha, foco,
+   controles, color, títulos y contacto. No exige recompilar Sass.
+5. Cuatro fichas desplegables nativas: Casa Amatista, Nido Apartment,
+   Textura Studio y Villa Lumina. Incluyen concepto, alcance y enlace a contacto.
+6. Presentación explícita de proyectos ilustrativos y fotos de referencia.
+   Se retiró la apariencia de historial de obras fechado que no está acreditado.
+7. Formulario que prepara borrador local, texto copiable y enlace a email.
+   Etiquetas, nombres, campos requeridos, límites de longitud y mensaje claro
+   de que nada se ha enviado. Editar los campos descarta el borrador mostrado.
+8. Descripción de página, salto al contenido, texto de imágenes, carga diferida
+   de fotografías del portafolio y prioridad para la imagen principal.
+9. Guía HTML de diseño propio, README y notas de venta.
+
+ARCHIVOS
+Editados: index.html y assets/js/main.js.
+Nuevos: assets/js/theme.js, scss/enhancements.css, documentation/index.html,
+README.txt, release/QA.txt y release/SELLER-NOTES.txt.
+El CSS y las fuentes Sass originales permanecen como base; enhancements.css
+contiene los ajustes finales y debe cargarse después de main.css.
+El PDF preexistente se conserva sin modificación. No se generó otro.
+
+PENDIENTES DEL DUEÑO
+- Revisión en pantallas e interacciones: no ejecutada en esta revisión.
+- Configurar el correo real y sustituir identidad/proyectos/fotos de muestra.
+- Definir licencia de distribución, derechos de recursos y política de soporte.
+- Integrar un backend únicamente si se desea envío desde el sitio.
+
+No hay métricas de rendimiento, certificaciones de accesibilidad ni resultados
+de compatibilidad que reportar. No se garantiza aprobación de tienda ni ventas.

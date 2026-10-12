@@ -1,114 +1,93 @@
-/**
- * AURA INTERACTIVE MOTOR — CORE UX & RENDERING LOGIC
- * Código nativo optimizado para animaciones fluidas y control de estado de UI.
- */
-
+'use strict';
 document.addEventListener('DOMContentLoaded', () => {
-    initSmartNavigation();
-    initParallaxVisuals();
-    initThemeToggle();
+    initTheme();
+    initNavigation();
+    initInquiry();
 });
-
-/**
- * Control inteligente de la barra de navegación flotante.
- * Detecta la dirección del scroll para optimizar el espacio visual en pantalla.
- */
-function initSmartNavigation() {
-    const navBar = document.querySelector('.smart-nav');
-    if (!navBar) return;
-
-    let lastScrollY = window.scrollY;
-    const scrollThreshold = 10; // Pixels mínimos para activar el cambio de estado
-
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        // Evita lecturas erróneas en rebotes de scroll superiores (especialmente en iOS/iPadOS)
-        if (currentScrollY < 0) return;
-
-        // Si la diferencia de scroll es menor al umbral, se ignora la operación
-        if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
-            return;
-        }
-
-        // Determina la dirección del desplazamiento
-        if (currentScrollY > lastScrollY && currentScrollY > 120) {
-            // El usuario baja: se oculta la barra para priorizar la fotografía
-            navBar.classList.add('nav-hidden');
-        } else {
-            // El usuario sube: la píldora translúcida reaparece suavemente
-            navBar.classList.remove('nav-hidden');
-        }
-
-        lastScrollY = currentScrollY;
-    }, { passive: true }); // Atributo passive para optimizar el rendimiento de scroll
-}
-
-/**
- * Inicialización y control del conmutador de temas (Dark / Light).
- */
-function initThemeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
-
-    toggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        let newTheme = 'dark';
-
-        if (currentTheme === 'dark' || !currentTheme) {
-            newTheme = 'light';
-        }
-
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('aura-theme', newTheme);
+function initTheme() {
+    const button = document.getElementById('theme-toggle');
+    if (!button) return;
+    const update = () => {
+        const dark = document.documentElement.dataset.theme !== 'light';
+        button.setAttribute('aria-label', dark ? 'Switch to light appearance' : 'Switch to dark appearance');
+        button.querySelector('.theme-label').textContent = dark ? 'Light' : 'Dark';
+    };
+    update();
+    button.addEventListener('click', () => {
+        const theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        try { localStorage.setItem('aura-theme', theme); } catch { /* Continue without saving. */ }
+        update();
     });
-
-    // Carga del tema guardado previamente en la sesión del usuario
-    const savedTheme = localStorage.getItem('aura-theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    }
+    button.hidden = false;
 }
-
-// Asegúrate de mandar llamar esta función dentro del DOMContentLoaded existente en tu main.js:
-// initThemeToggle();
-
-/**
- * Micro-interacción de paralaje sutil para los contenedores de imágenes premium.
- * Añade profundidad tridimensional al interactuar con el scroll.
- */
-function initParallaxVisuals() {
-    const images = document.querySelectorAll('.parallax-img');
-    
-    // Verificación de capacidades de hardware antes de aplicar efectos
-    if ('IntersectionObserver' in window && window.requestAnimationFrame) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    window.addEventListener('scroll', scrollHandler);
-                } else {
-                    window.removeEventListener('scroll', scrollHandler);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        images.forEach(img => imageObserver.observe(img));
-
-        function scrollHandler() {
-            window.requestAnimationFrame(() => {
-                images.forEach(img => {
-                    const rect = img.getBoundingClientRect();
-                    const viewHeight = window.innerHeight;
-                    
-                    // Si el elemento está visible en el viewport
-                    if (rect.top < viewHeight && rect.bottom > 0) {
-                        // Calcula el desplazamiento relativo
-                        const scrollPercentage = (rect.top / viewHeight) * 100;
-                        // Aplica un sutil desplazamiento inverso del 5% máximo
-                        img.style.transform = `scale(1.05) translateY(${(scrollPercentage - 50) * 0.1}%)`;
-                    }
-                });
-            });
-        }
-    }
+function initNavigation() {
+    const header = document.querySelector('.smart-nav');
+    const menu = document.getElementById('main-navigation');
+    const button = document.getElementById('menu-toggle');
+    if (!header || !menu || !button) return;
+    const mobile = window.matchMedia('(max-width: 720px)');
+    let open = false;
+    const render = () => {
+        menu.hidden = mobile.matches && !open;
+        button.hidden = !mobile.matches;
+        button.setAttribute('aria-expanded', String(open));
+        button.textContent = open ? 'Close' : 'Menu';
+    };
+    const close = restoreFocus => {
+        open = false;
+        if (restoreFocus) button.focus();
+        render();
+    };
+    header.classList.add('navigation-ready');
+    button.addEventListener('click', () => { open = !open; render(); });
+    header.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && open) { event.preventDefault(); close(true); }
+    });
+    document.addEventListener('click', event => { if (open && !header.contains(event.target)) close(menu.contains(document.activeElement)); });
+    header.addEventListener('focusout', event => {
+        if (open && event.relatedTarget && !header.contains(event.relatedTarget)) close(false);
+    });
+    menu.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
+        const section = document.getElementById(link.hash.slice(1));
+        if (!section) return;
+        close(false);
+        section.focus({ preventScroll: true });
+    }));
+    const resize = () => {
+        const active = document.activeElement;
+        open = false;
+        render();
+        if (mobile.matches && menu.contains(active)) button.focus();
+        else if (!mobile.matches && active === button) menu.querySelector('a')?.focus();
+    };
+    if (mobile.addEventListener) mobile.addEventListener('change', resize);
+    else mobile.addListener(resize);
+    render();
+}
+function initInquiry() {
+    const form = document.getElementById('inquiry-form');
+    if (!form) return;
+    const result = document.getElementById('inquiry-result');
+    const draft = document.getElementById('inquiry-draft');
+    const email = document.getElementById('inquiry-email');
+    const status = document.getElementById('inquiry-status');
+    form.addEventListener('input', () => {
+        result.hidden = true;
+        draft.value = '';
+        email.removeAttribute('href');
+        status.textContent = '';
+    });
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const data = new FormData(form);
+        const body = `Name: ${String(data.get('name')).trim()}\nEmail: ${String(data.get('email')).trim()}\nProject: ${String(data.get('project')).trim()}\n\n${String(data.get('message')).trim()}`;
+        draft.value = body;
+        email.href = `mailto:${form.dataset.recipient}?subject=${encodeURIComponent('AURA project inquiry')}&body=${encodeURIComponent(body)}`;
+        result.hidden = false;
+        status.textContent = 'Draft prepared on your device. Nothing has been sent. Open your email app or copy the draft below.';
+        draft.focus();
+    });
+    document.getElementById('inquiry-prepare').disabled = false;
 }

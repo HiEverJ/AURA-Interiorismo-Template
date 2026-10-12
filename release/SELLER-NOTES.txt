@@ -1,0 +1,68 @@
+AURA 1.1 — SELLER NOTES
+
+POSICIONAMIENTO
+Portafolio editorial de una sola página para estudios de interiorismo y
+arquitectura. El producto concentra la presentación del estudio en un recorrido
+breve: introducción, filosofía, cuatro proyectos, servicios y contacto.
+Su propuesta es la sencillez: dos apariencias y fichas desplegables, sin convertir
+cada proyecto en una página adicional. No anunciarlo como multipágina.
+
+TÍTULO SUGERIDO
+AURA — Minimal Interior Design One-Page HTML Template
+
+DESCRIPCIÓN SUGERIDA (EN INGLÉS)
+AURA is a single-page HTML portfolio for interior design and architecture
+studios. A restrained editorial layout brings together your studio story,
+four expandable project briefs, service descriptions and an email-draft
+inquiry flow. Includes dark and light appearances, mobile navigation,
+compiled CSS, optional Sass sources, vanilla JavaScript and a dedicated
+HTML owner guide. No build step is required for everyday customization.
+
+CONTENIDO QUE SÍ INCLUYE
+- 1 página HTML con 5 secciones principales.
+- 4 proyectos de ejemplo con fichas desplegables nativas.
+- 2 apariencias de color y preferencia local opcional.
+- Navegación móvil y enlaces disponibles sin JavaScript.
+- Formulario de borrador local con texto copiable y enlace a email.
+- CSS compilado, fuentes Sass, JavaScript y documentación HTML.
+
+LIMITACIONES PARA LA FICHA DE VENTA
+No es WordPress, un CMS ni una plantilla de constructor visual.
+No incluye hosting, reservas, backend, envío automático de formularios ni soporte
+contratado. El comprador necesita conocimientos básicos de HTML/CSS.
+Las imágenes son referencias externas; no se incluyen como archivos descargables.
+Los proyectos son conceptos ilustrativos, no obras acreditadas del autor.
+No afirmar compatibilidad comprobada, accesibilidad certificada ni puntuaciones
+de rendimiento: esta revisión no incluyó pruebas.
+
+DECISIONES ANTES DE DISTRIBUIR
+1. Definir y adjuntar la licencia real del producto.
+2. Especificar autor, contacto de soporte, alcance y política de actualizaciones.
+3. Elegir qué imágenes entregar y documentar permisos/atribuciones correspondientes.
+4. Configurar la demo pública con datos claros y sin fingir envío de solicitudes.
+5. Realizar la revisión manual de pantallas que quedó a cargo del dueño.
+6. Empaquetar index.html, assets, scss, documentación, README y la licencia final.
+   Excluir las notas internas de venta cuando no sean parte de la entrega.
+7. El PDF anterior permanece intacto, pero no está actualizado con estos cambios;
+   preferir la guía HTML actual para evitar documentación contradictoria.
+
+RECURSOS EXTERNOS PRESENTES
+Google Fonts: Prata y DM Sans mediante enlace en index.html.
+Fotografías: images.unsplash.com, sin copias locales añadidas.
+IDs de referencia:
+photo-1618221195710-dd6b41faaea6
+photo-1600210492486-724fe5c67fb0
+photo-1600607687939-ce8a6c25118c
+photo-1600566753190-17f0baa2a6c3
+photo-1600210492493-0946911123ea
+Este inventario no determina derechos de redistribución ni identifica autores.
+
+SOBRE EL RECHAZO COMPARTIDO
+El correo de Creative Market rechazó la solicitud de tienda sin identificar
+un defecto específico de AURA. No permite concluir que estas correcciones
+resolverían la decisión; indica además que no revisarán futuras solicitudes.
+La mejora del producto y su documentación no garantiza aceptación ni ventas.
+
+ENTREGA DE ESTA EDICIÓN
+Código mejorado, guía HTML, recuento QA y notas de venta.
+Sin pruebas, scripts de prueba, capturas, PDF nuevos ni entornos de prueba.
